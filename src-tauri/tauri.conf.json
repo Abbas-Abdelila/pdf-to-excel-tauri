@@ -18,6 +18,12 @@
         "request": true,
         "scope": ["http://localhost:8008/*"]
       },
+      "fs" :{
+        "all": true
+      },
+      "dialog": {
+        "all": true
+      },
       "shell": {
         "sidecar": true,
         "scope": [
@@ -31,9 +37,9 @@
     },
     "windows": [
       {
-        "title": "my-tauri-app",
-        "width": 800,
-        "height": 600
+        "title": "PDF to Excel",
+        "width": 1920,
+        "height": 1080
       }
     ],
     "security": {
@@ -41,10 +47,12 @@
     },
     "bundle": {
       "active": true,
-      "targets": "all",
-      "identifier": "com.my-tauri-app.app",
+      "targets":"nsis",
+      "identifier": "com.pdf-to-excel.app",
       "icon": [
-        "icons/32x32.png",
+        "icons/piotr-32.ico",
+        "icons/piotr-64.ico",
+        "icons/piotr-128.ico",
         "icons/128x128.png",
         "icons/128x128@2x.png",
         "icons/icon.icns",

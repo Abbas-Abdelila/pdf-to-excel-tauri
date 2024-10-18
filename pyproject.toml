@@ -4,12 +4,19 @@ version = "0.1.0"
 description = ""
 authors = ["Guilherme Prokisch <guilherme.prokisch@gmail.com>"]
 readme = "README.md"
+packages = [{include = "src-python"}]
 
 [tool.poetry.dependencies]
 python = ">=3.12,<3.14"
 pyinstaller = "^6.10.0"
 fastapi = { extras = ["standard"], version = "^0.115.0" }
 colorama = "^0.4.6"
+pypdf2 = "^3.0.1"
+pandas = "^2.2.3"
+sqlalchemy = "^2.0.35"
+camelot-py = "^0.11.0"
+opencv-python = "^4.10.0.84"
+ghostscript = "^0.7"
 
 [build-system]
 requires = ["poetry-core"]
