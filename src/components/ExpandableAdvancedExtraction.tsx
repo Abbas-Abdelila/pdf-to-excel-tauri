@@ -19,9 +19,10 @@ type FormData = {
 type ExpandableAdvancedSettingsProps = {
   onSaveSettings: (settings: FormData) => void;
   totalPages: number;
+  setIsConverted: (isConverted: boolean) => void;
 }
 
-export default function ExpandableAdvancedSettings({ onSaveSettings, totalPages }: ExpandableAdvancedSettingsProps) {
+export default function ExpandableAdvancedSettings({ onSaveSettings, setIsConverted, totalPages }: ExpandableAdvancedSettingsProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -49,7 +50,7 @@ export default function ExpandableAdvancedSettings({ onSaveSettings, totalPages 
       </div>
       <CollapsibleContent className="space-y-2">
         <div className="rounded-md border px-4 py-3 font-mono text-sm">
-          <AdvancedExtraction onSaveSettings={onSaveSettings} totalPages={totalPages} />
+          <AdvancedExtraction onSaveSettings={onSaveSettings} setIsConverted={setIsConverted} totalPages={totalPages} />
         </div>
       </CollapsibleContent>
     </Collapsible>

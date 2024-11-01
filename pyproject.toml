@@ -17,6 +17,7 @@ sqlalchemy = "^2.0.35"
 camelot-py = "^0.11.0"
 opencv-python = "^4.10.0.84"
 ghostscript = "^0.7"
+sse-starlette = "^2.1.3"
 
 [build-system]
 requires = ["poetry-core"]

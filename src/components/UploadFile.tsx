@@ -8,7 +8,15 @@ import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { EmbedPDF } from "@simplepdf/react-embed-pdf";
 
-export default function UploadFile({ setFileName, setFileOpen, setTotalPages }: { setFileName: (fileName: string) => void, setFileOpen: (fileOpen: boolean) => void, setTotalPages: (totalPages: number) => void }) {
+export default function UploadFile({
+  setFileName,
+  setFileOpen,
+  setTotalPages,
+}: {
+  setFileName: (fileName: string) => void;
+  setFileOpen: (fileOpen: boolean) => void;
+  setTotalPages: (totalPages: number) => void;
+}) {
   const [file, setFile] = useState<File | null>(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -52,7 +60,7 @@ export default function UploadFile({ setFileName, setFileOpen, setTotalPages }: 
               setUploadProgress(percent);
             }
           },
-        }
+        },
       );
 
       if (response.status === 200) {
@@ -67,6 +75,7 @@ export default function UploadFile({ setFileName, setFileOpen, setTotalPages }: 
         const totalPages = response.data.totalPages; // Adjust this based on your API response
         setTotalPages(totalPages);
         setLoading(false);
+        setFileOpen(true);
       } else {
         setLoading(false);
         alert("Failed to upload file. Please try again.");
@@ -106,15 +115,26 @@ export default function UploadFile({ setFileName, setFileOpen, setTotalPages }: 
               <div className="flex items-center justify-between p-2 bg-gray-100 rounded">
                 <div className="flex items-center space-x-2 overflow-hidden">
                   <File className="flex-shrink-0 h-4 w-4 sm:h-5 sm:w-5 text-blue-500" />
-                  <span className="text-xs sm:text-sm truncate">{file.name}</span>
+                  <span className="text-xs sm:text-sm truncate">
+                    {file.name}
+                  </span>
                 </div>
-                <Button variant="ghost" size="icon" onClick={removeFile} className="flex-shrink-0">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={removeFile}
+                  className="flex-shrink-0"
+                >
                   <X className="h-3 w-3 sm:h-4 sm:w-4" />
                 </Button>
               </div>
             </div>
           )}
-          <Button className="mt-2 sm:mt-3 md:mt-4" disabled={!file} onClick={handleUpload}>
+          <Button
+            className="mt-2 sm:mt-3 md:mt-4"
+            disabled={!file}
+            onClick={handleUpload}
+          >
             {loading ? <Loader2 className="animate-spin" /> : "Upload"}
           </Button>
           {uploadProgress > 0 && uploadProgress < 100 && (
